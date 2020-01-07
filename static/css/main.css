@@ -65,6 +65,7 @@ h2 {
 }
 ul li{
     list-style-type: none;
+    font-weight: bold;
 }
 
 input:invalid {
