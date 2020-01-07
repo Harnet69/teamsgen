@@ -28,7 +28,7 @@ header{
 
 body {
     background-image: url("/static/img/background1.jpeg");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     color: #3e655a;
