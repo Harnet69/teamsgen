@@ -44,7 +44,7 @@ h1 {
 h2 {
     font-family: 'Girassol', cursive;
     color: deepskyblue;
-    font-size: 40pt;
+    font-size: 50pt;
 
 }
 
@@ -52,12 +52,12 @@ h2 {
     margin: -50px auto 40px auto;
     /*margin-top: -50px;*/
     /*margin-bottom: 40px;*/
-    font-size: 20pt;
+    font-size: 30pt;
     background-color: white;
     float: left;
     width: 50%;
     min-width: 300px;
-    min-height: 500px;
+    min-height: 470px;
     text-align: center;
     border: 3px solid black ;
     border-radius: 10%;
