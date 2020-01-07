@@ -11,6 +11,7 @@ header{
     margin-bottom: 0px;
 }
 #header{
+ background-color: rgba(255, 255, 255, 0.8);
     /*background: papayawhip;*/
 }
 
@@ -23,30 +24,50 @@ header{
 }
 
 body {
-    background-image: url("/static/img/background.jpeg");
-    font-family: 'Girassol', cursive;
+    background-image: url("/static/img/background1.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #3e655a;
+
 }
 
 h1 {
+    font-family: 'Girassol', cursive;
     margin-top:  +30px;
-    color: white;
+    color: deepskyblue;
+    font-size: 60pt;
 }
 h2 {
-    color: white;
+    font-family: 'Girassol', cursive;
+    color: deepskyblue;
+    font-size: 40pt;
+
+}
+
+.container-fluid div{
+    font-size: 20pt;
+    background-color: white;
+    float: left;
+    width: 50%;
+   min-width: 300px;
+    text-align: center;
+    border: 3px solid black ;
+    border-radius: 10%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+ul li{
+    list-style-type: none;
 }
 
 input:invalid {
   border: 2px solid red;
-}
+}h1
 
 input:focus {
   background-color: yellow;
 }
 
-p::first-letter {
-  color: blue;
-  font-size: x-large;
-}
 
 .update{
     text-align: left;
@@ -131,94 +152,14 @@ p::first-letter {
   opacity: 1;
 }
 
-
-
 footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+ background-color: rgba(255, 255, 255, 0.8);
   /*background-color: papayawhip;*/
-  color: #4CAF50;
+  color: deepskyblue;
   text-align: center;
-}
-
-/*Style for sign up page*/
-#username, #nickname {
-    width: 150px;
-}
-
-.form-group textarea {
-    width: 400px;
-}
-
-#user_age {
-    width: 70px;
-}
-
-.form-group label {
-    font-size: 20px;
-}
-
-.user_info{
-    margin-left: 20px;
-}
-
-.flash_message {
-    text-align: center;
-    color: #9C1A1C;
-}
-
-/*Quizes lists*/
-#quizes_list_table{
-    width:100%;
-    height:100%;
-}
-
-#quiz_list{
-    margin: 0px auto;
-    margin-bottom: 25px;
-    padding: 0px 10px;
-
-}
-
-#quiz_list{
-    align-content: center;
-    width: 100%;
-}
-
-#quiz_list table {
-    border: 5px solid;
-    border-style: dashed;
-    border-color: papayawhip;
-    border-collapse: collapse;
-    text-align: center;
-
-}
-#quiz_list th {
-    color: #00b8de;
-    background: papayawhip;
-    padding: 10px;
-    border: 5px solid;
-    border-style: dashed;
-    border-color: papayawhip;
-    border-collapse: collapse;
-    text-align: center;
-}
-#quiz_list td {
-    padding: 10px;
-    border-collapse: collapse;
-    border: 5px solid;
-    border-style: dashed;
-    border-color: papayawhip;
-    border-collapse: collapse;
-    text-align: center;
-}
-#quiz_list tr:hover {
-    background-color: #5fbae9;
-}
-
-.content-wrapper {
-    padding-left: 5%;
-    padding-bottom: 100px;
+  font-size: 24px;
 }

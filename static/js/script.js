@@ -1,1 +1,0 @@
-alert('JS file was connected!');
