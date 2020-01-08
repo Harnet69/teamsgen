@@ -3,7 +3,7 @@
 {% block h1 %}Teams generator{% endblock %}
 
 {% block content %}
-    <div>
+    <div id="left">
         <h2>Members</h2>
         <ul>
             <li>John</li>
@@ -14,8 +14,13 @@
             <li>Math</li>
         </ul>
     </div>
-    <div>
+    <div id="right">
         <h2>Teams</h2>
     <input type="image" src="/static/img/generate_button5.png" />
     </div>
+    <script>
+    window.onload = function() {
+    dragula([document.getElementById('left'), document.getElementById('right')]);
+};
+    </script>
 {% endblock %}
