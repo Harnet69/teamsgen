@@ -9,13 +9,28 @@ const ol = document.querySelector('ol');
 const numberOfMembers = document.querySelector('h4 span');
 const listName = document.getElementsByClassName('memberName');
 const input = document.querySelector('input');
+const genButton = document.getElementById('generate');
 
 const removeName = (e) => {
     const index = e.target.parentNode.dataset.key;
     listOfAllMembers.splice(index, 1);
     numberOfMembers.textContent = listOfAllMembers.length;
     renderList();
-}
+};
+
+const clickedDelButton = (e) => {
+    let opacity =1;
+    let timeOut = setInterval(function () {
+        genButton.style.opacity = opacity;
+        opacity -= 0.03;
+        if(opacity <= 0){
+            clearInterval(timeOut);
+            console.log('STOP');
+        }
+    },10);
+
+};
+
 
 const addTask = (e) => {
     e.preventDefault();
@@ -40,7 +55,8 @@ const renderList = () => {
     });
 }
 
-form.addEventListener('submit', addTask)
+form.addEventListener('submit', addTask);
+genButton.addEventListener('click', clickedDelButton);
 
 const buttonGenerator = document.querySelector('#generate');
 const randomizer = document.querySelector('div.randomize')
