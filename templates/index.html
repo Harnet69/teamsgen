@@ -4,16 +4,21 @@
 
 {% block content %}
     <div id="left" class="add">
- <h2>Add members: </h2>
-        <form action="">
-            <input type="text">
-            <button>Add</button>
-        </form>
-        <h4>Person number: <span>0</span></h4>
-        <ol></ol>
+        <h2>Members: <label id="numOfMemb">0</label></h2>
+        <div class="input-group mb-3">
+          <input type="text" id="add_member_input" class="form-control" placeholder="Member's name" aria-label="Member's name" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button id="add_btn" class="btn btn-outline-secondary" type="button">Add</button>
+          </div>
+        </div>
+        <div id="listOfMembers">
+{#                <div class="member_name"><label>Mark</label><img src="/static/img/del_btn.png" alt=""></div>#}
+{#                <div class="member_name"><label>Sandra</label><img src="/static/img/del_btn.png" alt=""></div>#}
+{#                <div class="member_name"><label>David</label><img src="/static/img/del_btn.png" alt=""></div>#}
+        </div>
     </div>
     <div id="right" class="randomize">
-        <h2>Teams</h2>
+        <h2>Teams: <label id="numOfTeams">0</label></h2>
     <input id="generate" type="image" src="/static/img/generate_button5.png" >
     </div>
 
