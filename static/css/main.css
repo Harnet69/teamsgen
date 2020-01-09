@@ -37,6 +37,14 @@ body {
 
 }
 
+#add_user{
+    height: 65px; border: 2px solid black; border-radius: 10px; opacity: 0.5; background: white;
+}
+
+#add_user:hover{
+    opacity: 1; background: #007bff;
+}
+
 .NumberOfMembers{
     background-color: rgba(255, 255, 255, 0.5);
     border: 2px solid black;
