@@ -95,8 +95,10 @@ h2 {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-ul { border: 1px solid blue;
-
+ul {
+    margin: 15px 30%;
+    border: 3px solid blue;
+    border-radius: 10px;
 }
 
 ul li{

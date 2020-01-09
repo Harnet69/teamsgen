@@ -10,7 +10,8 @@ const numberOfMembers = document.querySelector('h4 span');
 const listName = document.getElementsByClassName('memberName');
 const input = document.querySelector('input.name');
 let inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
-const divRandom = document.querySelector('div.randomize')
+const divRandom = document.querySelector('div.randomize');
+let leftDiv = document.getElementById('left');
 
 const removeName = (e) => {
     const index = e.target.parentNode.dataset.key;
@@ -82,7 +83,7 @@ let showRandomList = () => {
 
     result.forEach(function (element) {
         const ul = document.createElement('ul');
-        ul.innerHTML = 'Group: '
+        // ul.innerHTML = 'Group: '
         divRandom.appendChild(ul);
         element.forEach(function (nameElement) {
             nameRemove = nameElement.textContent;
@@ -106,7 +107,7 @@ function elemDisapp(genButton){
             clearInterval(timeOut);
             genButton.removeEventListener("click", showRandomList);
             genButton.remove();
-            document.getElementById('left').remove();
+            leftDiv.remove();
             document.getElementById('right').style.width = '100%';
         }
     },1);
