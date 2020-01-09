@@ -5,10 +5,12 @@
 {% block content %}
     <div id="left" class="add">
  <h2>Add members: </h2>
-        <form action="">
-            <input type="text" class="name">
-            <button>Add</button>
-        </form>
+        <div class="input">
+            <form action="">
+                <input type="text" class="name" class="form-control" placeholder="Member's name" aria-label="Member's name" aria-describedby="basic-addon2">
+                <button>Add</button>
+            </form>
+        </div>
         <h4>Person number: <span>0</span></h4>
         <ol id="ol"></ol>
     </div>
