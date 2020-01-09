@@ -39,7 +39,7 @@ body {
 
 .NumberOfMembers{
     margin: 0 auto;
-    display: block;
+    /*display: block;*/
     width: 70px;
     text-align: center;
 }
