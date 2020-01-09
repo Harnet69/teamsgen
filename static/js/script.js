@@ -72,6 +72,7 @@ const showRandomList = () => {
             resultArray[chunkIndex] = [];
         }
         resultArray[chunkIndex].push(item);
+        elemDisapp(buttonGenerator);
         return resultArray;
     }, [])
 
@@ -89,6 +90,26 @@ const showRandomList = () => {
 
 }
 
+// Vital's peace of cake
+// slowly disappear element
+function elemDisapp(genButton){
+    let opacity =1;
+    let timeOut = setInterval(function () {
+        genButton.style.opacity = opacity;
+        opacity -= 0.005;
+        if(opacity <= 0){
+            clearInterval(timeOut);
+            let genButtonForDelete = document.getElementById('generate');
+            genButtonForDelete.removeEventListener("click", elemDisapp);
+            genButtonForDelete.remove();
+            console.log('STOP');
+        }
+    },1);
+
+}
+
+
 buttonGenerator.addEventListener('click', showRandomList);
+
 };
 
