@@ -1,5 +1,5 @@
 window.onload = function() {
-    dragula([document.getElementById('left'), document.getElementById('right')]);
+        dragula([document.getElementById('left'), document.getElementById('right'), document.getElementsByClassName('randomize').lastElementChild]);
 
     const listOfAllMembers = [];
 
@@ -47,7 +47,7 @@ const renderList = () => {
 
 form.addEventListener('submit', addTask)
 
-const buttonGenerator = document.querySelector('#generate');
+let buttonGenerator = document.querySelector('#generate');
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -64,7 +64,7 @@ function shuffle(array) {
     return array;
 }
 
-const showRandomList = () => {
+let showRandomList = () => {
     let randomArray = shuffle(listOfAllMembers);
     let numberOfMember = inputNumberOfMembers.value;
     if (numberOfMember === '') return alert('fill member number');
@@ -103,10 +103,8 @@ function elemDisapp(genButton){
         opacity -= 0.005;
         if(opacity <= 0){
             clearInterval(timeOut);
-            let genButtonForDelete = document.getElementById('generate');
-            genButtonForDelete.removeEventListener("click", elemDisapp);
-            genButtonForDelete.remove();
-            console.log('STOP');
+            genButton.removeEventListener("click", showRandomList);
+            genButton.remove();
         }
     },1);
 
