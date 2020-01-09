@@ -26,7 +26,7 @@ const addTask = (e) => {
     if (memberName === "") return alert('Write name!');
     const newName = document.createElement('li');
     newName.className = 'memberName';
-    newName.innerHTML = memberName + "<button>Remove</button>";
+    newName.innerHTML = memberName + "<button class='btn btn-outline-danger'>Remove</button>";
     listOfAllMembers.push(newName);
     renderList();
     ol.appendChild(newName);
