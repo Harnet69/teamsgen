@@ -105,6 +105,7 @@ function elemDisapp(genButton){
         opacity -= 0.005;
         if(opacity <= 0){
             clearInterval(timeOut);
+            document.getElementById('teams').textContent = 'Teams:';
             genButton.removeEventListener("click", showRandomList);
             genButton.remove();
             leftDiv.remove();
