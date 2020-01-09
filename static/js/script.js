@@ -36,9 +36,12 @@ const addTask = (e) => {
 
 const renderList = () => {
     ol.textContent = '';
+    let nameDiv = document.createElement('div');
+        nameDiv.classList.add('member_name');
     listOfAllMembers.forEach((singleMember, index) => {
         singleMember.dataset.key = index;
-        ol.appendChild(singleMember);
+        document.getElementById('ol').appendChild(nameDiv);
+        nameDiv.appendChild(singleMember);
     });
 }
 
