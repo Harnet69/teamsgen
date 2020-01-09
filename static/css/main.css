@@ -27,7 +27,7 @@ body {
 }
 
 .member_name{
-    width: 200px;
+    width: 300px;
     margin: 0 auto;
     text-align: right;
 }
@@ -96,4 +96,11 @@ footer {
   color: deepskyblue;
   text-align: center;
   font-size: 24px;
+}
+
+.del_button{
+    opacity: 0.5;
+}
+.del_button:hover{
+    opacity: 1;
 }
