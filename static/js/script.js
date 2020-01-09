@@ -9,7 +9,7 @@ const ol = document.querySelector('ol');
 const numberOfMembers = document.querySelector('h4 span');
 const listName = document.getElementsByClassName('memberName');
 const input = document.querySelector('input.name');
-const inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
+let inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
 const divRandom = document.querySelector('div.randomize')
 
 const removeName = (e) => {
@@ -76,6 +76,7 @@ let showRandomList = () => {
         }
         resultArray[chunkIndex].push(item);
         elemDisapp(buttonGenerator);
+        elemDisapp(inputNumberOfMembers);
         return resultArray;
     }, [])
 
@@ -105,6 +106,8 @@ function elemDisapp(genButton){
             clearInterval(timeOut);
             genButton.removeEventListener("click", showRandomList);
             genButton.remove();
+            document.getElementById('left').remove();
+            document.getElementById('right').style.width = '100%';
         }
     },1);
 
