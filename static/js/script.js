@@ -1,14 +1,16 @@
 window.onload = function() {
     dragula([document.getElementById('left'), document.getElementById('right')]);
-};
 
-const listOfAllMembers = [];
+    const listOfAllMembers = [];
+
 
 const form = document.querySelector('form');
 const ol = document.querySelector('ol');
 const numberOfMembers = document.querySelector('h4 span');
 const listName = document.getElementsByClassName('memberName');
-const input = document.querySelector('input');
+const input = document.querySelector('input.name');
+const inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
+const divRandom = document.querySelector('div.randomize')
 
 const removeName = (e) => {
     const index = e.target.parentNode.dataset.key;
@@ -43,12 +45,50 @@ const renderList = () => {
 form.addEventListener('submit', addTask)
 
 const buttonGenerator = document.querySelector('#generate');
-const randomizer = document.querySelector('div.randomize')
 
-const groupGenerator = () => {
-    const randomIndex = Math.floor(Math.random() * listOfAllMembers.length);
+function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue;
+    while (0 !== currentIndex) {
+        const randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-    randomizer.textContent = `Groups list ${listOfAllMembers[randomIndex].textContent}`;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 
-buttonGenerator.addEventListener('click', groupGenerator);
+const showRandomList = () => {
+    let randomArray = shuffle(listOfAllMembers);
+    let numberOfMember = inputNumberOfMembers.value;
+    if (numberOfMember === '') return alert('fill member number');
+    let result = randomArray.reduce((resultArray, item, index) => {
+        const chunkIndex = Math.floor(index / numberOfMember);
+
+        if (!resultArray[chunkIndex]) {
+            resultArray[chunkIndex] = [];
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
+    }, [])
+
+    result.forEach(function (element) {
+        const ul = document.createElement('ul');
+        divRandom.appendChild(ul);
+        element.forEach(function (nameElement) {
+            nameRemove = nameElement.textContent;
+            name = nameRemove.replace('Remove', '')
+            const li = document.createElement('li');
+            ul.appendChild(li);
+            li.innerHTML = li.innerHTML + name;
+        });
+    });
+
+}
+
+buttonGenerator.addEventListener('click', showRandomList);
+};
+
