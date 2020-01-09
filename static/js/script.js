@@ -81,6 +81,7 @@ const showRandomList = () => {
 
     result.forEach(function (element) {
         const ul = document.createElement('ul');
+        ul.innerHTML = 'Group: '
         divRandom.appendChild(ul);
         element.forEach(function (nameElement) {
             nameRemove = nameElement.textContent;
