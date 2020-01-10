@@ -25,8 +25,8 @@ function elemDisapp(genButton){
 function genButton() {
     const genButton = document.getElementById('generate');
     genButton.addEventListener('click', function () {
-        elemDisapp(genButton);
-        createResult(addMembsToArr());
+        elemDisapp(genButton); // gen button disappear
+        createResult(addMembsToArr()); // get users names, shuffle and display
     });
 }
 
@@ -57,9 +57,9 @@ function addMemberRecord(memberName) {
     usersli.classList.add('member_name');
     usersli.innerHTML = memberDispHTML;
     usersUl.appendChild(usersli);
+    delMember(memberNum);
     memberNum++;
     clearInputField();
-    delMember();
 }
 
 // add members list to array
@@ -100,10 +100,10 @@ function clearInputField() {
 }
 
 // add listener to delete member
-function delMember() {
+function delMember(memberNum) {
     let delButton = document.getElementsByClassName('del_button');
-    delButton[0].addEventListener('click', function () {
-        console.log(delButton[0].getAttribute('id'));
+    delButton[memberNum].addEventListener('click', function () {
+        console.log(delButton[memberNum].getAttribute('id'));
     });
 }
 
