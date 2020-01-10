@@ -12,13 +12,14 @@ const input = document.querySelector('input.name');
 let inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
 const divRandom = document.querySelector('div.randomize');
 let leftDiv = document.getElementById('left');
+let buttonGenerator = document.querySelector('#generate');
 
 const removeName = (e) => {
     const index = e.target.parentNode.dataset.key;
     listOfAllMembers.splice(index, 1);
     numberOfMembers.textContent = listOfAllMembers.length;
     renderList();
-}
+};
 
 const addTask = (e) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ const addTask = (e) => {
     input.value = '';
     numberOfMembers.textContent = listName.length;
     newName.querySelector('button').addEventListener('click', removeName);
-}
+};
 
 const renderList = () => {
     ol.textContent = '';
@@ -44,14 +45,11 @@ const renderList = () => {
         document.getElementById('ol').appendChild(nameDiv);
         nameDiv.appendChild(singleMember);
     });
-}
+};
 
-form.addEventListener('submit', addTask)
-
-let buttonGenerator = document.querySelector('#generate');
 
 function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue;
     while (0 !== currentIndex) {
         const randomIndex = Math.floor(Math.random() * currentIndex);
@@ -94,7 +92,7 @@ let showRandomList = () => {
         });
     });
 
-}
+};
 
 // Vital's peace of cake
 // slowly disappear element
@@ -115,7 +113,7 @@ function elemDisapp(genButton){
 
 }
 
-
+form.addEventListener('submit', addTask)
 buttonGenerator.addEventListener('click', showRandomList);
 
 };
