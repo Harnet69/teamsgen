@@ -12,10 +12,9 @@ function elemDisapp(genButton){
         opacity -= 0.005;
         if(opacity <= 0){
             clearInterval(timeOut);
-            let genButtonForDelete = document.getElementById('generate');
-            genButtonForDelete.removeEventListener("click", elemDisapp);
-            genButtonForDelete.remove();
-            console.log('STOP');
+            // let genButtonForDelete = document.getElementById('generate');
+            genButton.removeEventListener("click", elemDisapp);
+            genButton.remove();
         }
     },1);
 
@@ -54,7 +53,8 @@ function addMemberRecord(memberName) {
     let memberDispHTML = "<label class='member_name_for_arr' id='member"+memberNum+"_name'>"+memberName+"</label><img class='del_button' id='del"+memberNum+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
     let usersUl = document.getElementById('listOfMembers');
     let usersli = document.createElement('div');
-    usersli.classList.add('member_name');
+    usersli.classList.add();
+    usersli.setAttribute('id', 'member'+memberNum+'_name'); // give id to div for deletion
     usersli.innerHTML = memberDispHTML;
     usersUl.appendChild(usersli);
     delMember(memberNum);
@@ -70,7 +70,6 @@ function addMembsToArr() {
         membersNames.push(member_name.textContent);
     }
     shuffledMembersNames = shuffle(membersNames);
-    console.log(shuffledMembersNames);
     return shuffledMembersNames;
 }
 
@@ -103,7 +102,8 @@ function clearInputField() {
 function delMember(memberNum) {
     let delButton = document.getElementsByClassName('del_button');
     delButton[memberNum].addEventListener('click', function () {
-        console.log(delButton[memberNum].getAttribute('id'));
+        let delDiv = document.getElementById('member'+memberNum+'_name');
+        elemDisapp(delDiv);
     });
 }
 
