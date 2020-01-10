@@ -25,6 +25,7 @@ function elemDisapp(genButton){
 function genButton() {
     const genButton = document.getElementById('generate');
     genButton.addEventListener('click', function () {
+        addMembsToArr();
         elemDisapp(genButton);
     });
 }
@@ -50,7 +51,7 @@ function addMemberButton() {
 
 // create a new user information div
 function addMemberRecord(memberName) {
-    let memberDispHTML = "<label id='member"+memberNum+"_name'>"+memberName+"</label><img class='del_button' id='del"+memberNum+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
+    let memberDispHTML = "<label class='member_name_for_arr' id='member"+memberNum+"_name'>"+memberName+"</label><img class='del_button' id='del"+memberNum+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
     let usersUl = document.getElementById('listOfMembers');
     let usersli = document.createElement('div');
     usersli.classList.add('member_name');
@@ -60,6 +61,24 @@ function addMemberRecord(memberName) {
     clearInputField();
     delMember();
 }
+
+// add members list to array
+function addMembsToArr() {
+    let membNames = document.getElementsByClassName('member_name_for_arr');
+    let membersNames = [];
+    for(let member_name of membNames){
+        membersNames.push(member_name.textContent);
+    }
+    shuffledMembersNames = shuffle(membersNames);
+    console.log(shuffledMembersNames);
+    return shuffledMembersNames;
+}
+
+// shuffle members names array
+function shuffle(arrForShuffle) {
+    return arrForShuffle.sort(() => Math.random() - 0.5);
+}
+
 
 // clear input field after adding a record
 function clearInputField() {

@@ -2,6 +2,7 @@ from flask import Flask, flash, render_template, request, redirect, session, esc
 
 app = Flask(__name__)
 
+
 # The main index page
 @app.route('/')
 def index():
