@@ -25,8 +25,8 @@ function elemDisapp(genButton){
 function genButton() {
     const genButton = document.getElementById('generate');
     genButton.addEventListener('click', function () {
-        addMembsToArr();
         elemDisapp(genButton);
+        createResult(addMembsToArr());
     });
 }
 
@@ -79,6 +79,19 @@ function shuffle(arrForShuffle) {
     return arrForShuffle.sort(() => Math.random() - 0.5);
 }
 
+// create and display shuffled list of names
+function createResult(membNamesArr) {
+    // let membDiv = document.createElement('div');
+    let rightDiv = document.getElementById('right')
+    let membUl = document.createElement('ul');
+    rightDiv.appendChild(membUl);
+    for(let membName of membNamesArr){
+        let membLi = document.createElement('li');
+        membLi.textContent = membName;
+        membUl.appendChild(membLi);
+    }
+
+}
 
 // clear input field after adding a record
 function clearInputField() {
