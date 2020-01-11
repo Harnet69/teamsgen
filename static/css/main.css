@@ -17,13 +17,24 @@ header{
     border-radius: 10px;
 }
 
+#memb_in_team{
+    background-color: rgba(255, 255, 255, 0);
+    width: 60px;
+    height: 60px;
+    color: deepskyblue;
+}
+/*show arrows in num input fields*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
 body {
     background-image: url("/static/img/background1.jpeg");
     background-repeat: repeat-y;
     background-size: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     color: #3e655a;
-
 }
 
 .member_name{
@@ -33,16 +44,16 @@ body {
 }
 
 h1 {
-    font-family: 'Girassol', cursive, bold;
+    font-family: 'Bitter', serif;
     margin-top:  +30px;
     color: deepskyblue;
-    font-size: 60pt;
+    font-size: 50pt;
 }
 h2 {
-    font-family: 'Girassol', cursive;
+    font-family: 'Bitter', serif;
     color: deepskyblue;
-    font-size: 50pt;
-
+    font-size: 35pt;
+    padding-top: 5px;
 }
 
 .input-group{
@@ -88,6 +99,7 @@ ul li{
 }
 
 footer {
+  font-family: 'Bitter', serif;
   position: fixed;
   left: 0;
   bottom: 0;

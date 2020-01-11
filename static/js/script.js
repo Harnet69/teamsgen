@@ -2,7 +2,6 @@ window.onload = function() {
     dragula([document.getElementById('left'), document.getElementById('right')]);
 };
 
-let memberNum = 0;
 // closure for members counter
 let membersNum = (function() {
     let membsCounter = 0;
