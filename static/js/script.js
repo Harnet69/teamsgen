@@ -127,7 +127,7 @@ function delMember(memberNum) {
         let delDiv = document.getElementById('member'+memberNum+'_name');
         elemDisapp(delDiv);
         membersNum.decr();
-        membersNum.val();
+        document.getElementById('numOfMemb').textContent = membersNum.val();
     });
 }
 
