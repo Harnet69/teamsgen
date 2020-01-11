@@ -25,6 +25,8 @@ function genButton() {
     const genButton = document.getElementById('generate');
     genButton.addEventListener('click', function () {
         elemDisapp(genButton); // gen button disappear
+        elemDisapp(document.getElementById('left')); // Div with members disappear
+        document.getElementById('right').style.width = '100%';
         createResult(addMembsToArr()); // get users names, shuffle and display
     });
 }
