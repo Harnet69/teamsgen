@@ -19,7 +19,7 @@ header{
 
 #memb_in_team{
     background-color: rgba(255, 255, 255, 0);
-    width: 75px;
+    width: 80px;
     height: 60px;
     color: deepskyblue;
 }
@@ -52,7 +52,7 @@ h1 {
 h2 {
     font-family: 'Bitter', serif;
     color: deepskyblue;
-    font-size: 30pt;
+    font-size: 25pt;
     padding-top: 5px;
 }
 
