@@ -57,7 +57,7 @@ h2 {
 }
 
 p{
-    margin: -5px 5px;
+    margin: -3px 5px;
 }
 
 .input-group{
@@ -85,7 +85,7 @@ p{
 
 #describing{
     margin: -50px auto 60px auto;
-    font-size: 20pt;
+    font-size: 18pt;
     background-color: white;
     width: 100%;
     border: 3px solid black ;
