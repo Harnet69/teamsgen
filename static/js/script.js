@@ -120,6 +120,7 @@ function createResult(membNamesArr) {
     let membsInTeam = document.getElementById('memb_in_team').value;
     let rightDiv = document.getElementById('right');
     let teamsArr = divideMembsToTeams(membNamesArr, membsInTeam); // array of teams
+    rightDiv.firstElementChild.innerHTML = "Teams:";
     // show teams
     for(let team in teamsArr){
         let membUl = document.createElement('ul');

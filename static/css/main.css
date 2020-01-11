@@ -56,6 +56,10 @@ h2 {
     padding-top: 5px;
 }
 
+p{
+    margin: -5px 5px;
+}
+
 .input-group{
     border: 2px solid black ;
     border-radius: 10px;
@@ -77,6 +81,17 @@ h2 {
     background-color: gainsboro;
     opacity: 0.8;
     font-size: 20pt;
+}
+
+#describing{
+    margin: -50px auto 60px auto;
+    font-size: 20pt;
+    background-color: white;
+    width: 100%;
+    border: 3px solid black ;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+
 }
 
 #left , #right{
