@@ -52,7 +52,7 @@ h1 {
 h2 {
     font-family: 'Bitter', serif;
     color: deepskyblue;
-    font-size: 35pt;
+    font-size: 30pt;
     padding-top: 5px;
 }
 
@@ -91,6 +91,13 @@ h2 {
     border: 3px solid black ;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.6);
+}
+
+ul{
+    margin: 5px auto;
+    border: 3px solid black ;
+    border-radius: 10px;
+    width: 60%;
 }
 
 ul li{
