@@ -3,6 +3,24 @@ window.onload = function() {
 };
 
 let memberNum = 0;
+// closure for members counter
+let membersNum = (function() {
+    let membsCounter = 0;
+    function changeBy(val) {
+        membsCounter += val;
+    }
+    return {
+        inc: function() {
+            changeBy(1);
+        },
+        decr: function() {
+            changeBy(-1);
+        },
+        val: function() {
+            return membsCounter;
+        }
+    };
+})();
 
 // slowly disappear element
 function elemDisapp(genButton){
@@ -36,7 +54,9 @@ function addMemberInputField() {
     addMemberInput.addEventListener('keyup', function () {
          if (event.keyCode === 13) { // if 'Enter' was pressed on a input field
             addMemberRecord(addMemberInput.value);
-            teamsMembsCount('+');
+             membersNum.inc();
+             membersNum.val();
+             document.getElementById('numOfMemb').textContent = membersNum.val();
          }
     });
 }
@@ -47,33 +67,21 @@ function addMemberButton() {
     addMemberButton.addEventListener('click', function () {
         let memberNameInputField = document.querySelector('#add_member_input');
         addMemberRecord(memberNameInputField.value);
-        teamsMembsCount('+');
+        membersNum.inc();
+        document.getElementById('numOfMemb').textContent = membersNum.val();
     });
-}
-
-// add counter teams member
-function teamsMembsCount(incDecr) {
-    let teamsNum = document.getElementById('numOfMemb').textContent;
-    if(incDecr === '+'){
-        teamsNum = +teamsNum+1;
-    }
-    else{
-        teamsNum = +teamsNum-1;
-    }
-    document.getElementById('numOfMemb').textContent = teamsNum;
 }
 
 // create a new user information div
 function addMemberRecord(memberName) {
-    let memberDispHTML = "<label class='member_name_for_arr' id='member"+memberNum+"_name'>"+memberName+"</label><img class='del_button' id='del"+memberNum+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
+    let memberDispHTML = "<label class='member_name_for_arr' id='member"+membersNum.val()+"_name'>"+memberName+"</label><img class='del_button' id='del"+membersNum.val()+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
     let usersUl = document.getElementById('listOfMembers');
     let usersli = document.createElement('div');
-    usersli.classList.add();
-    usersli.setAttribute('id', 'member'+memberNum+'_name'); // give id to div for deletion
+    usersli.classList.add('member_name');
+    usersli.setAttribute('id', 'member'+membersNum.val()+'_name'); // give id to div for deletion
     usersli.innerHTML = memberDispHTML;
     usersUl.appendChild(usersli);
-    delMember(memberNum);
-    memberNum++;
+    delMember(membersNum.val());
     clearInputField();
 }
 
@@ -119,7 +127,8 @@ function delMember(memberNum) {
     delButton[memberNum].addEventListener('click', function () {
         let delDiv = document.getElementById('member'+memberNum+'_name');
         elemDisapp(delDiv);
-        teamsMembsCount('-');
+        membersNum.decr();
+        membersNum.val();
     });
 }
 
