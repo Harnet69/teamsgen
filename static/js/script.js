@@ -17,7 +17,6 @@ function elemDisapp(genButton){
             genButton.remove();
         }
     },1);
-
 }
 
 // add event click to a generate button
@@ -37,6 +36,7 @@ function addMemberInputField() {
     addMemberInput.addEventListener('keyup', function () {
          if (event.keyCode === 13) { // if 'Enter' was pressed on a input field
             addMemberRecord(addMemberInput.value);
+            teamsMembsCount('+');
          }
     });
 }
@@ -47,7 +47,20 @@ function addMemberButton() {
     addMemberButton.addEventListener('click', function () {
         let memberNameInputField = document.querySelector('#add_member_input');
         addMemberRecord(memberNameInputField.value);
+        teamsMembsCount('+');
     });
+}
+
+// add counter teams member
+function teamsMembsCount(incDecr) {
+    let teamsNum = document.getElementById('numOfMemb').textContent;
+    if(incDecr === '+'){
+        teamsNum = +teamsNum+1;
+    }
+    else{
+        teamsNum = +teamsNum-1;
+    }
+    document.getElementById('numOfMemb').textContent = teamsNum;
 }
 
 // create a new user information div
@@ -106,6 +119,7 @@ function delMember(memberNum) {
     delButton[memberNum].addEventListener('click', function () {
         let delDiv = document.getElementById('member'+memberNum+'_name');
         elemDisapp(delDiv);
+        teamsMembsCount('-');
     });
 }
 
