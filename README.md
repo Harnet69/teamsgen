@@ -17,3 +17,6 @@ https://teamsgen.herokuapp.com/
     https://github.com/harnet69
     https://github.com/ColAlexandra
 ## Screenshots:
+![ScreenShot](https://github.com/Harnet69/teamsgen/blob/master/static/img/Screenshots/start.png?raw=true)
+![ScreenShot](https://github.com/Harnet69/teamsgen/blob/master/static/img/Screenshots/add.png?raw=true)
+![ScreenShot](https://github.com/Harnet69/teamsgen/blob/master/static/img/Screenshots/teams.png?raw=true)
