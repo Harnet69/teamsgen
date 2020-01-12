@@ -40,10 +40,22 @@ function genButton() {
     const genButton = document.getElementById('generate');
 
     genButton.addEventListener('click', function () {
-        elemDisapp(genButton); // gen button disappear
-        elemDisapp(document.getElementById('left')); // Div with members disappear
-        document.getElementById('right').style.width = '100%'; // wide div with results to 100% width
-        createResult(addMembsToArr()); // get users names, shuffle and display
+        let membsInTeam = document.getElementById('memb_in_team').value;
+        let numOfMembs = document.getElementsByClassName('member_name').length; // Count quantity of members
+        if(membsInTeam >= 2) {
+            if(numOfMembs >=3) {
+                elemDisapp(genButton); // gen button disappear
+                elemDisapp(document.getElementById('left')); // Div with members disappear
+                document.getElementById('right').style.width = '100%'; // wide div with results to 100% width
+                createResult(addMembsToArr()); // get users names, shuffle and display
+            }
+            else {
+                alert('Your members list should be consist 3 members at least');
+            }
+        }
+        else {
+            alert("Number of members in a team can't be less than 2");
+        }
     });
 }
 
@@ -70,9 +82,8 @@ function addMemberButton() {
         let memberNameInputField = document.querySelector('#add_member_input');
         let lower = memberNameInputField.value;
         const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
-        addMemberRecord(upper);
-        if(memberNameInputField.value){
-            addMemberRecord(memberNameInputField.value);
+        if(upper){
+            addMemberRecord(upper);
             membersNum.inc(); // increase a members counter
             document.getElementById('numOfMemb').textContent = membersNum.val();
         }
