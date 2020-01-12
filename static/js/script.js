@@ -1,122 +1,169 @@
-window.onload = function() {
-        dragula([document.getElementById('left'), document.getElementById('right'), document.getElementsByClassName('randomize').lastElementChild]);
+// window.onload = function() {
+//     dragula([document.getElementById('left'), document.getElementById('right')]);
+// };
 
-    const listOfAllMembers = [];
-
-
-const form = document.querySelector('form');
-const ol = document.querySelector('ol');
-const numberOfMembers = document.querySelector('h4 span');
-const listName = document.getElementsByClassName('memberName');
-const input = document.querySelector('input.name');
-let inputNumberOfMembers = document.querySelector('input.NumberOfMembers');
-const divRandom = document.querySelector('div.randomize');
-let leftDiv = document.getElementById('left');
-
-const removeName = (e) => {
-    const index = e.target.parentNode.dataset.key;
-    listOfAllMembers.splice(index, 1);
-    numberOfMembers.textContent = listOfAllMembers.length;
-    renderList();
-}
-
-const addTask = (e) => {
-    e.preventDefault();
-    const memberName = input.value;
-    if (memberName === "") return alert('Write name!');
-    const newName = document.createElement('li');
-    newName.className = 'memberName';
-    newName.innerHTML = memberName + "<button class='btn btn-outline-danger'>Remove</button>";
-    listOfAllMembers.push(newName);
-    renderList();
-    ol.appendChild(newName);
-    input.value = '';
-    numberOfMembers.textContent = listName.length;
-    newName.querySelector('button').addEventListener('click', removeName);
-}
-
-const renderList = () => {
-    ol.textContent = '';
-    let nameDiv = document.createElement('div');
-        nameDiv.classList.add('member_name');
-    listOfAllMembers.forEach((singleMember, index) => {
-        singleMember.dataset.key = index;
-        document.getElementById('ol').appendChild(nameDiv);
-        nameDiv.appendChild(singleMember);
-    });
-}
-
-form.addEventListener('submit', addTask)
-
-let buttonGenerator = document.querySelector('#generate');
-
-function shuffle(array) {
-    var currentIndex = array.length,
-        temporaryValue;
-    while (0 !== currentIndex) {
-        const randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+// closure for members counter
+let membersNum = (function() {
+    let membsCounter = 0;
+    function changeBy(val) {
+        membsCounter += val;
     }
-
-    return array;
-}
-
-let showRandomList = () => {
-    let randomArray = shuffle(listOfAllMembers);
-    let numberOfMember = inputNumberOfMembers.value;
-    if (numberOfMember === '') return alert('fill member number');
-    let result = randomArray.reduce((resultArray, item, index) => {
-        const chunkIndex = Math.floor(index / numberOfMember);
-
-        if (!resultArray[chunkIndex]) {
-            resultArray[chunkIndex] = [];
+    return {
+        inc: function() {
+            changeBy(1);
+        },
+        decr: function() {
+            changeBy(-1);
+        },
+        val: function() {
+            return membsCounter;
         }
-        resultArray[chunkIndex].push(item);
-        elemDisapp(buttonGenerator);
-        elemDisapp(inputNumberOfMembers);
-        return resultArray;
-    }, [])
+    };
+})();
 
-    result.forEach(function (element) {
-        const ul = document.createElement('ul');
-        // ul.innerHTML = 'Group: '
-        divRandom.appendChild(ul);
-        element.forEach(function (nameElement) {
-            nameRemove = nameElement.textContent;
-            name = nameRemove.replace('Remove', '')
-            const li = document.createElement('li');
-            ul.appendChild(li);
-            li.innerHTML = li.innerHTML + name;
-        });
-    });
-
-}
-
-// Vital's peace of cake
 // slowly disappear element
-function elemDisapp(genButton){
+function elemDisapp(elemForDIsapp){
     let opacity =1;
     let timeOut = setInterval(function () {
-        genButton.style.opacity = opacity;
+        elemForDIsapp.style.opacity = opacity;
         opacity -= 0.005;
         if(opacity <= 0){
             clearInterval(timeOut);
-            document.getElementById('teams').textContent = 'Teams:';
-            genButton.removeEventListener("click", showRandomList);
-            genButton.remove();
-            leftDiv.remove();
-            document.getElementById('right').style.width = '100%';
+            elemForDIsapp.removeEventListener("click", elemDisapp);
+            elemForDIsapp.remove();
         }
     },1);
+}
 
+// add event click to a generate button
+function genButton() {
+    const genButton = document.getElementById('generate');
+
+    genButton.addEventListener('click', function () {
+        elemDisapp(genButton); // gen button disappear
+        elemDisapp(document.getElementById('left')); // Div with members disappear
+        document.getElementById('right').style.width = '100%'; // wide div with results to 100% width
+        createResult(addMembsToArr()); // get users names, shuffle and display
+    });
+}
+
+// add member name by a input field
+function addMemberInputField() {
+    let addMemberInput = document.querySelector('#add_member_input');
+
+    addMemberInput.addEventListener('keyup', function () {
+        if (event.keyCode === 13 && addMemberInput.value) { // if 'Enter' was pressed and a input field isn't empty
+            let lower = addMemberInput.value;
+            const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+            addMemberRecord(upper);
+            membersNum.inc();
+            document.getElementById('numOfMemb').textContent = membersNum.val();
+        }
+    });
+}
+
+// add member with button add
+function addMemberButton() {
+    let addMemberButton = document.querySelector('#add_btn');
+
+    addMemberButton.addEventListener('click', function () {
+        let memberNameInputField = document.querySelector('#add_member_input');
+        let lower = memberNameInputField.value;
+        const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+        addMemberRecord(upper);
+        if(memberNameInputField.value){
+            addMemberRecord(memberNameInputField.value);
+            membersNum.inc(); // increase a members counter
+            document.getElementById('numOfMemb').textContent = membersNum.val();
+        }
+    });
+}
+
+// create a new user information div
+function addMemberRecord(memberName) {
+    let memberDispHTML = "<label class='member_name_for_arr' id='member"+membersNum.val()+"_name'>"+memberName+"</label><img class='del_button' id='del"+membersNum.val()+"Button' src=\"/static/img/del_btn.png\" alt=\"\">";
+    let usersUl = document.getElementById('listOfMembers');
+    let usersli = document.createElement('div');
+
+    usersli.classList.add('member_name');
+    usersli.setAttribute('id', 'member'+membersNum.val()+'_name'); // give id to div for future deletion
+    usersli.innerHTML = memberDispHTML;
+    usersUl.appendChild(usersli);
+    delMember(membersNum.val());
+    clearInputField();
+}
+
+// add members list to array
+function addMembsToArr() {
+    let membNames = document.getElementsByClassName('member_name_for_arr');
+    let membersNames = [];
+
+    for(let member_name of membNames){
+        membersNames.push(member_name.textContent);
+    }
+
+    return shuffle(membersNames);
+}
+
+// shuffle members names array
+function shuffle(arrForShuffle) {
+    return arrForShuffle.sort(() => Math.random() - 0.5);
+}
+
+// divide members according to a number of a team
+function divideMembsToTeams(membNamesArr, membsInTeam) {
+    let teamsArr = [];
+    let arrays = [];
+    let size = membsInTeam;
+
+    while (membNamesArr.length > 0)
+        arrays.push(membNamesArr.splice(0, size));
+
+    return arrays;
+}
+
+// display teams
+function createResult(membNamesArr) {
+    let membsInTeam = document.getElementById('memb_in_team').value;
+    let rightDiv = document.getElementById('right');
+    let teamsArr = divideMembsToTeams(membNamesArr, membsInTeam); // array of teams
+    rightDiv.firstElementChild.innerHTML = "Teams:";
+    // show teams
+    for(let team=0; team < teamsArr.length; team++){
+        let membUl = document.createElement('ul');
+        membUl.setAttribute('id','team'+team);
+        membUl.classList.add('teams');
+        rightDiv.appendChild(membUl);
+        for(let membName of teamsArr[team]){
+            let membLi = document.createElement('li');
+            membLi.textContent = membName;
+            membUl.appendChild(membLi);
+        }
+    }
+}
+
+// clear input field after adding a record
+function clearInputField() {
+    let addMemberInput = document.querySelector('#add_member_input');
+    addMemberInput.value = '';
+}
+
+// add listener to delete member
+function delMember(memberNum) {
+    let delButton = document.getElementsByClassName('del_button');
+    delButton[memberNum].addEventListener('click', function () {
+        let delDiv = document.getElementById('member'+memberNum+'_name');
+        elemDisapp(delDiv);
+        membersNum.decr();
+        document.getElementById('numOfMemb').textContent = membersNum.val();
+    });
 }
 
 
-buttonGenerator.addEventListener('click', showRandomList);
+function main() {
+    genButton();
+    addMemberInputField();
+    addMemberButton();
+}
 
-};
-
+main();

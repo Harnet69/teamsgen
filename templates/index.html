@@ -3,21 +3,23 @@
 {% block h1 %}Teams generator{% endblock %}
 
 {% block content %}
+    <div id="describing">
+        <p>As we know, it can be difficult to divide members to teams. So go ahead and use this teams generator, which do all this hard and nervous work for you</p>
+    </div>
     <div id="left" class="add">
- <h2>Add members: </h2>
-        <div class="input">
-            <form action="">
-                <input type="text" class="name" class="form-control" placeholder="Member's name" aria-label="Member's name" aria-describedby="basic-addon2">
-                <button id="add_user" class="btn btn-outline-primary btn-lg">Add</button>
-            </form>
+        <h2>Members: <label id="numOfMemb">0</label></h2>
+        <div class="input-group mb-3">
+            <input type="text" id="add_member_input" class="form-control" autofocus placeholder="Member's name" aria-label="Member's name" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button id="add_btn" class="btn btn-outline-secondary" type="button">Add</button>
+            </div>
         </div>
-        <h4>Person number: <span>0</span></h4>
-        <ol id="ol"></ol>
+        <div id="listOfMembers">
+        </div>
     </div>
     <div id="right" class="randomize">
-        <h2 id="teams">Members in a team:</h2>
-        <input type="number" class='NumberOfMembers' name="numberOfMembers" value="2" min='1'>
-    <input id="generate" style="width: 345px" type="image" src="/static/img/generate_button5.png" >
+        <h2>Team's members: <input id="memb_in_team" type="number" onkeypress="return event.charCode >= 48" min="2" step="1" value="2" id="numOfTeams"></h2>
+        <input id="generate" type="image" src="/static/img/generate_button5.png" >
     </div>
 
 {% endblock %}

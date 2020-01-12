@@ -12,9 +12,21 @@ header{
     margin-bottom: 0;
 }
 #header{
- background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     border: 3px solid black ;
     border-radius: 10px;
+}
+
+#memb_in_team{
+    background-color: rgba(255, 255, 255, 0);
+    width: 80px;
+    height: 60px;
+    color: deepskyblue;
+}
+/*show arrows in num input fields*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
 }
 
 body {
@@ -23,64 +35,37 @@ body {
     background-size: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     color: #3e655a;
-
-}
-
-.name{
-    width: 80%;
 }
 
 .member_name{
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
     text-align: right;
-
-}
-
-#add_user{
-    height: 65px; border: 2px solid black; border-radius: 10px; opacity: 0.5; background: white;
-}
-
-#add_user:hover{
-    opacity: 1; background: #007bff;
-}
-
-.NumberOfMembers{
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: 0 auto;
-    display: block;
-    width: 70px;
-    text-align: center;
 }
 
 h1 {
     font-family: 'Bitter', serif;
     margin-top:  +30px;
-    color:  #007bff;
+    color: deepskyblue;
     font-size: 50pt;
 }
 h2 {
     font-family: 'Bitter', serif;
-    color:  #007bff;
-    font-size: 35pt;
-
+    color: deepskyblue;
+    font-size: 30pt;
+    padding-top: 5px;
 }
 
-.name{
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 2px solid black;
-    border-radius: 10px;
+p{
+    margin: -3px 5px;
 }
-
 
 .input-group{
     border: 2px solid black ;
     border-radius: 10px;
     margin: 0 auto;
-    width: 400px;
-    opacity: 0.3;
+    width: 300px;
+    opacity: 0.7;
 }
 
 .input-group input{
@@ -94,8 +79,23 @@ h2 {
 
 #addBtn{
     background-color: gainsboro;
-    opacity: 0.5;
+    opacity: 0.8;
     font-size: 20pt;
+}
+
+#add_member_input {
+    text-transform: capitalize;
+}
+
+#describing{
+    margin: -50px auto 60px auto;
+    font-size: 18pt;
+    background-color: white;
+    width: 100%;
+    border: 3px solid black ;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+
 }
 
 #left , #right{
@@ -109,13 +109,14 @@ h2 {
     text-align: center;
     border: 3px solid black ;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-ul {
-    margin: 15px 30%;
-    border: 3px solid blue;
+ul{
+    margin: 5px auto;
+    border: 3px solid black ;
     border-radius: 10px;
+    width: 60%;
 }
 
 ul li{
@@ -123,21 +124,16 @@ ul li{
     font-weight: bold;
 }
 
-/*hide numeration of members*/
-ol li {
-    list-style-type: none;
-}
-
 footer {
     font-family: 'Bitter', serif;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
- background-color: rgba(255, 255, 255, 0.5);
-  color: #007bff;
-  text-align: center;
-  font-size: 24px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: deepskyblue;
+    text-align: center;
+    font-size: 24px;
 }
 
 .del_button{
