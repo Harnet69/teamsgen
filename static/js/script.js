@@ -88,7 +88,6 @@ function addMemberButton() {
             addMemberRecord(upper);
             membersNum.inc(); // increase a members counter
             document.getElementById('numOfMemb').textContent = membersNum.val();
-            document.getElementById('add_member_input').focus();
         }
     });
 }
@@ -105,6 +104,7 @@ function addMemberRecord(memberName) {
     usersUl.appendChild(usersli);
     delMember(membersNum.val());
     clearInputField();
+    document.getElementById('add_member_input').focus();
 }
 
 // add members list to array
