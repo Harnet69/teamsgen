@@ -47,20 +47,14 @@ function genButton() {
     });
 }
 
-// capitalize the first name's letter
-function membNameCapitalize(lower) {
-    let upper = lower.charAt(0).toUpperCase() + lower.substring(1);
-    return upper;
-}
-
 // add member name by a input field
 function addMemberInputField() {
     let addMemberInput = document.querySelector('#add_member_input');
 
     addMemberInput.addEventListener('keyup', function () {
          if (event.keyCode === 13 && addMemberInput.value) { // if 'Enter' was pressed and a input field isn't empty
-             let upper = membNameCapitalize(addMemberInput.value);
-             addMemberRecord(upper);
+             console.log(typeof (addMemberInput.value));
+             addMemberRecord(addMemberInput.value);
              membersNum.inc();
              document.getElementById('numOfMemb').textContent = membersNum.val();
          }
@@ -73,8 +67,6 @@ function addMemberButton() {
 
     addMemberButton.addEventListener('click', function () {
         let memberNameInputField = document.querySelector('#add_member_input');
-        let upper = membNameCapitalize(memberNameInputField.value);
-        addMemberRecord(upper);
         if(memberNameInputField.value){
             addMemberRecord(memberNameInputField.value);
             membersNum.inc(); // increase a members counter
