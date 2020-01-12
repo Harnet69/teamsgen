@@ -1,6 +1,6 @@
-window.onload = function() {
-    dragula([document.getElementById('left'), document.getElementById('right')]);
-};
+// window.onload = function() {
+//     dragula([document.getElementById('left'), document.getElementById('right')]);
+// };
 
 // closure for members counter
 let membersNum = (function() {
@@ -52,7 +52,7 @@ function addMemberInputField() {
     let addMemberInput = document.querySelector('#add_member_input');
 
     addMemberInput.addEventListener('keyup', function () {
-         if (event.keyCode === 13) { // if 'Enter' was pressed on a input field
+         if (event.keyCode === 13 && addMemberInput.value) { // if 'Enter' was pressed and a input field isn't empty
              addMemberRecord(addMemberInput.value);
              membersNum.inc();
              document.getElementById('numOfMemb').textContent = membersNum.val();
@@ -66,9 +66,11 @@ function addMemberButton() {
 
     addMemberButton.addEventListener('click', function () {
         let memberNameInputField = document.querySelector('#add_member_input');
-        addMemberRecord(memberNameInputField.value);
-        membersNum.inc(); // increase a members counter
-        document.getElementById('numOfMemb').textContent = membersNum.val();
+        if(memberNameInputField.value){
+            addMemberRecord(memberNameInputField.value);
+            membersNum.inc(); // increase a members counter
+            document.getElementById('numOfMemb').textContent = membersNum.val();
+        }
     });
 }
 
@@ -122,8 +124,10 @@ function createResult(membNamesArr) {
     let teamsArr = divideMembsToTeams(membNamesArr, membsInTeam); // array of teams
     rightDiv.firstElementChild.innerHTML = "Teams:";
     // show teams
-    for(let team in teamsArr){
+    for(let team=0; team < teamsArr.length; team++){
         let membUl = document.createElement('ul');
+        membUl.setAttribute('id','team'+team);
+        membUl.classList.add('teams');
         rightDiv.appendChild(membUl);
         for(let membName of teamsArr[team]){
             let membLi = document.createElement('li');

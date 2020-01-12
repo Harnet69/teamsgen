@@ -83,6 +83,10 @@ p{
     font-size: 20pt;
 }
 
+#add_member_input {
+    text-transform: capitalize;
+}
+
 #describing{
     margin: -50px auto 60px auto;
     font-size: 18pt;
