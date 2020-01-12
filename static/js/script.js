@@ -50,10 +50,12 @@ function genButton() {
                 createResult(addMembsToArr()); // get users names, shuffle and display
             }
             else {
+                document.getElementById('add_member_input').focus();
                 alert('Your members list should be consist 3 members at least');
             }
         }
         else {
+            document.getElementById('add_member_input').focus();
             alert("Number of members in a team can't be less than 2");
         }
     });
@@ -86,6 +88,7 @@ function addMemberButton() {
             addMemberRecord(upper);
             membersNum.inc(); // increase a members counter
             document.getElementById('numOfMemb').textContent = membersNum.val();
+            document.getElementById('add_member_input').focus();
         }
     });
 }
