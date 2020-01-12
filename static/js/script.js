@@ -53,8 +53,9 @@ function addMemberInputField() {
 
     addMemberInput.addEventListener('keyup', function () {
          if (event.keyCode === 13 && addMemberInput.value) { // if 'Enter' was pressed and a input field isn't empty
-             console.log(typeof (addMemberInput.value));
-             addMemberRecord(addMemberInput.value);
+             let lower = addMemberInput.value;
+             const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+             addMemberRecord(upper);
              membersNum.inc();
              document.getElementById('numOfMemb').textContent = membersNum.val();
          }
@@ -67,6 +68,9 @@ function addMemberButton() {
 
     addMemberButton.addEventListener('click', function () {
         let memberNameInputField = document.querySelector('#add_member_input');
+        let lower = memberNameInputField.value;
+        const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+        addMemberRecord(upper);
         if(memberNameInputField.value){
             addMemberRecord(memberNameInputField.value);
             membersNum.inc(); // increase a members counter
